@@ -1,0 +1,55 @@
+.welcome-message h2 {
+    color: #831717cb;
+    font-size: 300%;
+    font-size: 55px;
+    line-height: 1;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: uppercase;
+    text-shadow: 0 2px 4.8px rgba(44, 3, 5, 0.562);
+    font-family: "Agency FB";
+}
+
+.welcome-message h3 {
+    color: #831717cb;
+    font-size: 600%;
+    text-shadow: none;
+    line-height: 1;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-shadow: 0 2px 4.8px rgba(65, 5, 5, 0.74);
+    font-family: "Agency FB";
+}
+
+.catalog h5 {
+    margin-top: 160px;
+    color: #d80e0eee;
+    font-size: 300%;
+    font-size: 55px;
+    line-height: 1;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: uppercase;
+    text-shadow: 0 2px 4.8px rgba(44, 3, 5, 0.562);
+    font-family: "Agency FB";
+    padding: 13px 13px;
+    border-radius: 3px;
+    transition: all .7s ease-in-out;
+}
+
+.catalog h5:hover {
+    font-size: 100px;
+}
+
+.catalog Link {
+    text-decoration: none;
+    color: #d80e0eee;
+}
