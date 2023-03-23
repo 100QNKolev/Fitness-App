@@ -7,6 +7,7 @@ import { Register } from './components/Register/Register';
 import { Home } from './components/Home/Home';
 import { Catalog } from './components/Catalog/Catalog';
 import { CreatePost } from './components/CreatePost/CreatePost';
+import { Details } from './components/Details/Details';
 
 function App() {
 
@@ -39,6 +40,7 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/catalog' element={<Catalog posts={posts} />} />
           <Route path='/create' element={<CreatePost onSubmitHandler={onCreateSubmit} />} />
+          <Route path='/catalog/:postId' element={<Details />}/>
         </Routes>
       </main>
 
