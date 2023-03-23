@@ -7,20 +7,14 @@
     text-decoration: none;
     font-family: arial, tahoma;
     list-style: none;
-    /*    outline: 1px solid brown;*/
+
   }
-  
-  /*   End global   */
-  
-  
   
   header {
     background-color: #333;
     height: 500px;
   }
-  
-  /*   Start navigation bar   */
-  
+
   nav {
     height: 80px;
     background-color: #222;
@@ -53,14 +47,6 @@
     background-color: brown;
   }
   
-  /*   End navigation bar   */
-  
-  
-  
-  
-  
-  /*   Start nav bar for small screens   */
-  
   .icon {
     display: none;
   }
@@ -74,10 +60,6 @@
     border-radius: 4px;
     cursor: pointer;
   }
-  
-  /*   End nav bar for small screens   */
-  
-  /*   Start media query   */
   
   @media (max-width: 1309px) {
     .icon {

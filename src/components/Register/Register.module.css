@@ -10,9 +10,9 @@ body {
     margin: 30px auto;
 }
 
-.login-block {
+.register-block {
     width: 320px;
-    height: 500px;
+    height: 510px;
     padding: 20px;
     background: #0000005e;
     border-radius: 5px;
@@ -20,7 +20,7 @@ body {
     margin: 0 auto;
 }
 
-.login-block h1 {
+.register-block h1 {
     text-align: center;
     color: #831717cb;
     font-size: 30px;
@@ -29,7 +29,7 @@ body {
     margin-bottom: 20px;
 }
 
-.login-block input {
+.register-block input {
     width: 100%;
     height: 42px;
     box-sizing: border-box;
@@ -43,31 +43,11 @@ body {
     margin-top: 20px;
 }
 
-.login-block input#username {
-    background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px top no-repeat;
-    background-size: 16px 80px;
-}
-
-.login-block input#username:focus {
-    background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px bottom no-repeat;
-    background-size: 16px 80px;
-}
-
-.login-block input#password {
-    background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px top no-repeat;
-    background-size: 16px 80px;
-}
-
-.login-block input#password:focus {
-    background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px bottom no-repeat;
-    background-size: 16px 80px;
-}
-
-.login-block input:active, .login-block input:focus {
+.register-block input:active, .register-block input:focus {
     border: 1px solid #ff656c;
 }
 
-.login-block button {
+.register-block button {
     width: 100%;
     height: 40px;
     background: #831717cb;
@@ -84,6 +64,6 @@ body {
     margin-top: 30px;
 }
 
-.login-block button:hover {
+.register-blocks button:hover {
     background: #ff7b81;
 }
