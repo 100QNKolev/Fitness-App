@@ -1,18 +1,29 @@
 import styles from './Register.module.css';
+import { useForm } from '../../hooks/useForm';
 
 
-export const Register = () => {
+export const Register = ({onRegisterSubmit}) => {
+
+    const { values, changeHandler, onSubmit } = useForm({
+        username: "",
+        password: "",
+        confirmPassword: "",
+        email: "",
+    }, onRegisterSubmit);
+
     return (
         <div>
-                <div className={styles['logo']}></div>
-                <div className={styles['register-block']}>
-                    <h1>Register</h1>
-                    <input type="text" defaultValue="" placeholder="Username" id="username" />
-                    <input type="password" defaultValue="" placeholder="Password" id="password" />
-                    <input type="password" defaultValue="" placeholder="Confirm Password" id="confirmPassword" />
-                    <input type="text" defaultValue="" placeholder="Email" id="email" />
+            <div className={styles['logo']}></div>
+            <div className={styles['register-block']}>
+                <h1>Register</h1>
+                <form onSubmit={onSubmit} method="POST">
+                    <input type="text" placeholder="Username" value={values.username} onChange={changeHandler} name="username" id="username" />
+                    <input type="password" placeholder="Password" value={values.password} onChange={changeHandler} name="password" id="password" />
+                    <input type="password" placeholder="Confirm Password" value={values.confirmPassword} onChange={changeHandler} name="confirmPassword" id="confirmPassword" />
+                    <input type="text" placeholder="Email" value={values.email} onChange={changeHandler} name="email" id="email" />
                     <button>Submit</button>
-                </div>
+                </form>
+            </div>
         </div>
     );
 };
