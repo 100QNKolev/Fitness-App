@@ -1,11 +1,26 @@
-import * as requester from '../services/requester';
+import {requestFactory} from '../services/requester';
 
-const baseUrl = 'http://localhost:3030/users/';
+const baseUrl = 'http://localhost:3030/users';
 
-export const Login = (data) => {
-    return requester.post(`${baseUrl}/login`, data);
-};
+export const authServiceFactory = (token) => {
+    
+    const request = requestFactory(token);
 
-export const Register = (data) => {
-    return requester.post(`${baseUrl}/register`, data);
+    const Login = async (data) => {
+        return await request.post(`${baseUrl}/login`, data);
+    };
+    
+    const Register = async (data) => {
+        return await request.post(`${baseUrl}/register`, data);
+    };
+    
+    const Logout = async (data) => {
+        return await request.get(`${baseUrl}/logout`, data);
+    };
+
+    return {
+        Login,
+        Register,
+        Logout
+    };
 };

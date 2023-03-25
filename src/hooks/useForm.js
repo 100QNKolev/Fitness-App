@@ -9,13 +9,20 @@ export const useForm = (initialValues, onSubmitHandler) => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        
+
         onSubmitHandler(values);
+    };
+
+    const changeValues = (newValues) => {
+//TODO: Validate dali newValues sa s sushtite propartita kato initialValues
+
+        setValues(newValues);
     };
 
     return {
         values,
         changeHandler,
         onSubmit,
+        changeValues,
     };
 };

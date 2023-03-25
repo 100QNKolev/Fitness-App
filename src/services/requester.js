@@ -1,25 +1,32 @@
-export const requester = async (method, url, data) => {
+export const requester = async (method, token, url, data) => {
     const options = {};
-    
-    if(method !== 'GET')
-    {
+
+    if (method !== 'GET') {
         options.method = method;
 
-        if(data)
-        {
-            options.header = {
-                'content-type': 'application/json'
+        if (data) {
+            options.headers = {
+                'content-type': 'application/json',
             };
 
             options.body = JSON.stringify(data);
         }
     }
 
+    if(token)
+    {
+        options.headers = {
+            ...options.headers,
+            'X-Authorization': token
+        };
+    }
+
+
     const response = await fetch(url, options);
 
     try {
         const result = await response.json();
-        
+
         return result;
     }
     catch (err) {
@@ -27,8 +34,16 @@ export const requester = async (method, url, data) => {
     }
 };
 
+export const requestFactory = (token) => {
+    const get = requester.bind(null, 'GET', token);
+    const post = requester.bind(null, 'POST', token);
+    const put = requester.bind(null, 'PUT', token);
+    const del = requester.bind(null, 'DELETE', token);
 
-export const get = requester.bind(null, 'GET');
-export const post = requester.bind(null, 'POST');
-export const put = requester.bind(null, 'PUT');
-export const del = requester.bind(null, 'DELETE');
+    return {
+        get,
+        post,
+        put,
+        del
+    };
+};

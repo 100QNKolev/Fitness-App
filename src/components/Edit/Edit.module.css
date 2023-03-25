@@ -1,0 +1,78 @@
+body {
+    background: url('https://media.discordapp.net/attachments/1008571057562714113/1085299026238394488/shadoowkrit123_dark_fitness_room_c7ac157b-97db-4eec-9492-bb466ca7f219.png?width=924&height=616') no-repeat fixed center center;
+    background-size: cover;
+    font-family: Montserrat;
+}
+
+.logo {
+    width: 213px;
+    height: 36px;
+    margin: 30px auto;
+}
+
+.editPost-block {
+    width: 500px;
+    height: 650px;
+    padding: 20px;
+    background: #0000005e;
+    border-radius: 5px;
+    border-top: 5px solid #831717cb;
+    margin: 0 auto;
+}
+
+.editPost-block h1 {
+    text-align: center;
+    color: #831717cb;
+    font-size: 30px;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.editPost-block input {
+    width: 100%;
+    height: 42px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 14px;
+    padding: 0 10px 0 10px;
+    outline: none;
+    margin-top: 20px;
+}
+
+.editPost-block input:active, .editPost-block input:focus {
+    border: 1px solid #ff656c;
+}
+
+.editPost-block button {
+    width: 100%;
+    height: 40px;
+    background: #831717cb;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #831717cb;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-family: Montserrat;
+    outline: none;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+.editPost-block button:hover {
+    background: #ff7b81;
+}
+
+textarea {
+    width: 460px;
+    height: 300px;
+    outline: none;
+}
+
+.editPost-block textarea:active, .editPost-block textarea:focus {
+    border: 1px solid #ff656c;
+}
