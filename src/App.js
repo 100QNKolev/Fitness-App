@@ -10,6 +10,8 @@ import { Details } from './components/Details/Details';
 import { AuthProvider } from './contexts/authContext';
 import { EditPost } from './components/Edit/Edit';
 import { PostProvider } from './contexts/postContext';
+import { About } from './components/About/About';
+import { Contact } from './components/Contact/Contact';
 
 function App() {
 
@@ -22,6 +24,8 @@ function App() {
           <main>
             <Routes>
               <Route path='/' element={<Home />} />
+              <Route path='/contact' element={<Contact />} />
+              <Route path='/about' element={<About />} />
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />
               <Route path='/logout' element={<Logout />} />

@@ -21,6 +21,7 @@ export const EditPost = () => {
             .then(result => {
                 changeValues(result);
             });
+            // eslint-disable-next-line
     }, [postId]);
 
     return (

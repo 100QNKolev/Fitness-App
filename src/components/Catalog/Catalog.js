@@ -4,15 +4,19 @@ import styles from './Catalog.module.css';
 
 export const Catalog = () => {
 
-    const {posts} = usePostContext();
+    const { posts } = usePostContext();
 
- return (
+    return (
         <div>
             {posts.map(x =>
                 <CatalogItem key={x._id} {...x} />
             )}
 
-            {posts.length === 0 && (<h1>No posts yet!</h1>)}
+            {posts.length === 0 && (
+                <div className={styles['heading']}>
+                    <h1>No posts yet!</h1>
+                </div>
+            )}
         </div>
     )
 };
