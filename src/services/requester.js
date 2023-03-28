@@ -13,8 +13,7 @@ export const requester = async (method, token, url, data) => {
         }
     }
 
-    if(token)
-    {
+    if (token) {
         options.headers = {
             ...options.headers,
             'X-Authorization': token
@@ -24,14 +23,14 @@ export const requester = async (method, token, url, data) => {
 
     const response = await fetch(url, options);
 
-    try {
-        const result = await response.json();
-
-        return result;
-    }
-    catch (err) {
+    if (response.status === 404 || response.status === 403) {
         return {};
     }
+
+
+    const result = await response.json();
+    return result;
+
 };
 
 export const requestFactory = (token) => {

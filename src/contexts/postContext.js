@@ -16,7 +16,7 @@ export const PostProvider = ({ children }) => {
     useEffect(() => {
         getAll()
             .then(result => {
-                result[0] === 403 ? setPosts([]) : setPosts(result);
+                setPosts(result);
             })
     });
 
