@@ -18,11 +18,17 @@ export const Contact = () => {
     }, onContactSubmit);
 
     return (
-        <form onSubmit={onSubmit} method="POST" >
-            <input name="name" id="name" type="text" className={styles['feedback-input']} placeholder="Name" value={values.username} onChange={changeHandler}/>
-            <input name="email" id="email" type="text" className={styles['feedback-input']} placeholder="Email" value={values.email} onChange={changeHandler}/>
-            <textarea name="question" id="question" className={styles['feedback-input']} placeholder="Your Question" onChange={changeHandler}></textarea>
-            <input type="submit" value="SUBMIT" />
-        </form>
+        <div>
+        <div className={styles['logo']}></div>
+        <div className={styles['contact-block']}>
+            <form onSubmit={onSubmit} method="POST" >
+                <h1>Contact Us</h1>
+                <input type="text" placeholder="Username" value={values.username} onChange={changeHandler} name="username" id="username" />
+                <input type="text" placeholder="Email" value={values.email} onChange={changeHandler} name="email" id="email" />
+                <input type="text" placeholder="Question" value={values.question} onChange={changeHandler} name="question" id="question" />
+                <button>Submit</button>
+            </form>
+        </div>
+    </div>
     );
 };
