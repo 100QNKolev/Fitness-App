@@ -1,12 +1,13 @@
+import { useEffect } from 'react';
 import { useForm } from '../../hooks/useForm';
 import styles from './Edit.module.css';
 import { useParams } from 'react-router-dom';
-import { usePostContext } from '../../contexts/gameContext';
+import { usePostContext } from '../../contexts/postContext';
 
 export const EditPost = () => {
    
     const { postId } = useParams();
-    const {onEditSubmit, getOne} = usePostContext();
+    const {onEditSubmit, getOnePost} = usePostContext();
     
     const { values, changeHandler, onSubmit, changeValues } = useForm({
         _id: '',
@@ -16,7 +17,7 @@ export const EditPost = () => {
     }, onEditSubmit);
  
     useEffect(() => {
-        getOne(postId)
+        getOnePost(postId)
             .then(result => {
                 changeValues(result);
             });

@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Header } from './components/Header/Header';
 import { Login } from './components/Login/Login';
@@ -10,7 +9,7 @@ import { CreatePost } from './components/CreatePost/CreatePost';
 import { Details } from './components/Details/Details';
 import { AuthProvider } from './contexts/authContext';
 import { EditPost } from './components/Edit/Edit';
-import { PostProvider } from './contexts/gameContext';
+import { PostProvider } from './contexts/postContext';
 
 function App() {
 
@@ -26,10 +25,10 @@ function App() {
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />
               <Route path='/logout' element={<Logout />} />
-              <Route path='/catalog' element={<Catalog posts={posts} />} />
-              <Route path='/create' element={<CreatePost onSubmitHandler={onCreateSubmit} />} />
-              <Route path='/catalog/:postId' element={<Details onDeleteHandler={deletePostHandler} />} />
-              <Route path='/catalog/:postId/edit' element={<EditPost onSubmitHandler={onEditSubmit} />} />
+              <Route path='/catalog' element={<Catalog />} />
+              <Route path='/create' element={<CreatePost />} />
+              <Route path='/catalog/:postId' element={<Details />} />
+              <Route path='/catalog/:postId/edit' element={<EditPost />} />
             </Routes>
           </main>
 

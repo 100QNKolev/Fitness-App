@@ -5,14 +5,13 @@ body {
 }
 
 .logo {
-    width: 213px;
-    height: 36px;
+    height: 10px;
     margin: 30px auto;
 }
 
 .comment-block {
     width: 320px;
-    height: 350px;
+    height: 235px;
     padding: 20px;
     background: #0000005e;
     border-radius: 5px;
@@ -26,7 +25,6 @@ body {
     font-size: 30px;
     text-transform: uppercase;
     margin-top: 0;
-    margin-bottom: 20px;
 }
 
 .comment-block input {
@@ -35,12 +33,11 @@ body {
     box-sizing: border-box;
     border-radius: 5px;
     border: 1px solid #ccc;
-    margin-bottom: 20px;
     font-size: 14px;
     font-family: Montserrat;
     padding: 0 20px 0 50px;
     outline: none;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .comment-block input:active, .comment-block input:focus {
@@ -61,7 +58,7 @@ body {
     font-family: Montserrat;
     outline: none;
     cursor: pointer;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
 .comment-block button:hover {

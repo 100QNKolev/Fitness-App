@@ -15,8 +15,9 @@ export const commentServiceFactory = (token) => {
         return comments;
     };
 
-    const create = async (postId, comment) => {
-        return await requester.post(baseUrl, { postId, comment });
+    const create = async (postId, values) => {
+        const {comment,username} = values;
+        return await requester.post(baseUrl, { postId, comment, username });
     };
 
     return {

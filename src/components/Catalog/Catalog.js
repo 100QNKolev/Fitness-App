@@ -1,5 +1,6 @@
 import { CatalogItem } from './CatalogItem/CatalogItem';
-import { usePostContext } from '../../contexts/gameContext';
+import { usePostContext } from '../../contexts/postContext';
+import styles from './Catalog.module.css';
 
 export const Catalog = () => {
 

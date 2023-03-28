@@ -1,15 +1,14 @@
-import { useContext } from "react";
-import { AuthContext } from "../../../contexts/authContext";
 import { useForm } from "../../../hooks/useForm";
 import styles from './AddComment.module.css';
+import { useAuthContext } from "../../../contexts/authContext";
 
 export const AddComment = ({ onCommentSubmit }) => {
 
-    const username = useContext(AuthContext);
+    const {username} = useAuthContext();
 
     const {values, changeHandler, onSubmit} = useForm({
         comment: '',
-        username
+        username: username,
     }, onCommentSubmit);
 
     return (
@@ -18,7 +17,8 @@ export const AddComment = ({ onCommentSubmit }) => {
             <div className={styles['comment-block']}>
                 <form onSubmit={onSubmit} method="POST" >
                     <h1>Add Comment</h1>
-                    <input type="text" placeholder="comment" value={values.comment} onChange={changeHandler} name="comment" id="comment" />
+                    <input type="text" placeholder="Username" value={values.username} name="username" id="username" disabled/>
+                    <input type="text" placeholder="Comment" value={values.comment} onChange={changeHandler} name="comment" id="comment" />
                     <button>Submit</button>
                 </form>
             </div>

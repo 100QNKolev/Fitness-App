@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { postServiceFactory } from '../services/postService';
 import { AuthContext } from "./authContext";
@@ -11,17 +11,17 @@ export const PostProvider = ({ children }) => {
 
     const [posts, setPosts] = useState([]);
     const navigate = useNavigate();
-    const { getOne, getAll } = postServiceFactory(token);
+    const { getOne, getAll, create, edit, deletePost } = postServiceFactory(token);
 
     useEffect(() => {
         getAll()
             .then(result => {
-                setPosts(result);
+                result[0] === 403 ? setPosts([]) : setPosts(result);
             })
     });
 
     const onCreateSubmit = async (data) => {
-        const newPost = await postService.create(data);
+        const newPost = await create(data);
 
         setPosts(x => [...x, newPost]);
 
@@ -29,7 +29,7 @@ export const PostProvider = ({ children }) => {
     };
 
     const onEditSubmit = async (data) => {
-        const result = await postService.edit(data._id, data);
+        const result = await edit(data._id, data);
 
         setPosts(state => state.map(x => x._id === data._id ? result : x));
 
@@ -38,19 +38,15 @@ export const PostProvider = ({ children }) => {
 
     const deletePostHandler = async (postId) => {
 
-        await postService.deletePost(postId);
+        await deletePost(postId);
 
         setPosts(state => state.filter(x => x._id !== postId));
 
         navigate('/catalog');
     };
 
-    const getOnePost = (postId) => {
-        getOne(postId)
-            .then(x => {
-                return x
-            }
-            )
+    const getOnePost = async (postId) => {
+        return await getOne(postId);
     };
 
     const context = {

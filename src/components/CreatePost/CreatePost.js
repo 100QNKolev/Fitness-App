@@ -1,6 +1,6 @@
 import { useForm } from '../../hooks/useForm';
 import styles from './CreatePost.module.css';
-import { usePostContext } from '../../contexts/gameContext';
+import { usePostContext } from '../../contexts/postContext';
 
 export const CreatePost = () => {
 

@@ -1,38 +1,35 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useService } from "../../hooks/useService";
-import styles from './Details.module.css';
 import { Link } from "react-router-dom";
-import { useForm } from "../../hooks/useForm";
 import { AddComment } from "./AddComment/AddComment";
 import { commentServiceFactory } from "../../services/commentService";
 import { useAuthContext } from "../../contexts/authContext";
-import { usePostContext } from "../../contexts/gameContext";
+import { usePostContext } from "../../contexts/postContext";
+import { Comment } from "./templates/Comment";
+import styles from './Details.module.css';
 
 export const Details = () => {
 
     const { postId } = useParams();
-    const {getOne} = usePostContext();
-    const [post, setPost] = useState({});
-    const { } = useForm({
-        comment: '',
 
-    });
-
-    const { userId, isAuthenticated, onDeleteHandler } = useAuthContext();
+    const { userId, isAuthenticated } = useAuthContext();
+    const { getOnePost, deletePostHandler } = usePostContext();
     const commentService = useService(commentServiceFactory);
+    const [post, setPost] = useState({});
+    const [comments, setComments] = useState([]);
 
     const isOwner = post._ownerId === userId;
 
     useEffect(() => {
         Promise.all([
-            getOne(postId),
+            getOnePost(postId),
             commentService.getAll(postId),
         ])
             .then(([postData, commentsData]) => {
+                setComments(commentsData === undefined ? [] : commentsData);
                 setPost({
                     ...postData,
-                    comments: commentsData
                 });
             });
     });
@@ -40,9 +37,8 @@ export const Details = () => {
     const onCommentSubmit = async (values) => {
         const result = commentService.create(postId, values);
 
-        setPost(state => ({
-            ...state,
-            comments: [...state.comments, result],
+        setComments(state => ({
+            ...state.comments, result,
         }));
     };
 
@@ -58,28 +54,32 @@ export const Details = () => {
                     <p>{post.description}</p>
                 </div>
                 {isOwner && (
-                    <div className="ownerButtons">
-                        <Link to={`/catalog/${post._id}/edit`} className="button" >Edit</Link>
-                        <button onClick={() => onDeleteHandler(post._id)} className="button">Delete</button>
+                    <div className={styles['ownerButtons']}>
+                        <Link to={`/catalog/${post._id}/edit`} className={styles['button']} >Edit</Link>
+                        <button onClick={() => deletePostHandler(post._id)} className={styles['button']}>Delete</button>
                     </div>
                 )}
-                {post.comments && (
-                    <div>
-                        <h2>Comments:</h2>
+                {comments.length === 0 && (
+                    <div className={styles['heading']}>
+                        <h1 style={{ marginTop: 50 }}>No coments</h1>
+                    </div>
+                )}
+                {comments.length > 0 && (
+                    <div className={styles['comment-section']}>
+                        <h2 className={styles['comments-heading']}>Comments:</h2>
                         <ul>
-                            {post.comments && Object.values(post.comments)
-                                .map(x => (<li key={x._id}>
-                                    <p>{x.username}: {x.comment}</p>
-                                </li>))}
+                            {comments
+                                .map(x => (
+                                    <div style={{ marginTop: 5 }} >
+                                        <Comment currentComment={x} />
+                                    </div>
+                                ))}
                         </ul>
                     </div>
                 )}
                 {isAuthenticated &&
                     <AddComment onCommentSubmit={onCommentSubmit} />
                 }
-                {!post.comments && (
-                    <h1>No coments</h1>
-                )}
             </div>
         </div>
 
