@@ -1,7 +1,10 @@
 import { CatalogItem } from './CatalogItem/CatalogItem';
-import styles from './Catalog.module.css';
+import { usePostContext } from '../../contexts/gameContext';
 
-export const Catalog = ({ posts }) => {
+export const Catalog = () => {
+
+    const {posts} = usePostContext();
+
  return (
         <div>
             {posts.map(x =>

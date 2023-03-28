@@ -1,12 +1,11 @@
 import styles from './Register.module.css';
 import { useForm } from '../../hooks/useForm';
-import { useContext } from 'react';
-import { AuthContext } from '../../contexts/authContext';
+import { useAuthContext } from '../../contexts/authContext';
 
 
 export const Register = () => {
 
-    const { onRegisterSubmit } = useContext(AuthContext);
+    const { onRegisterSubmit } = useAuthContext();
 
     const { values, changeHandler, onSubmit } = useForm({
         username: "",

@@ -6,16 +6,16 @@ export const authServiceFactory = (token) => {
     
     const request = requestFactory(token);
 
-    const Login = async (data) => {
-        return await request.post(`${baseUrl}/login`, data);
+    const Login = async (loginData) => {
+        return await request.post(`${baseUrl}/login`, loginData);
     };
     
-    const Register = async (data) => {
-        return await request.post(`${baseUrl}/register`, data);
+    const Register = async (registerData) => {
+        return await request.post(`${baseUrl}/register`, registerData);
     };
     
-    const Logout = async (data) => {
-        return await request.get(`${baseUrl}/logout`, data);
+    const Logout = async (logoutData) => {
+        return await request.get(`${baseUrl}/logout`, logoutData);
     };
 
     return {

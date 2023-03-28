@@ -1,23 +1,22 @@
 import { useForm } from '../../hooks/useForm';
 import styles from './Edit.module.css';
 import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
-import { useService } from '../../hooks/useService';
-import { postServiceFactory } from '../../services/postService';
+import { usePostContext } from '../../contexts/gameContext';
 
-export const EditPost = ({ onSubmitHandler }) => {
+export const EditPost = () => {
    
     const { postId } = useParams();
-    const postService = useService(postServiceFactory);
+    const {onEditSubmit, getOne} = usePostContext();
+    
     const { values, changeHandler, onSubmit, changeValues } = useForm({
         _id: '',
         title: '',
         thumbnailUrl: '',
         description: '',
-    }, onSubmitHandler);
+    }, onEditSubmit);
  
     useEffect(() => {
-        postService.getOne(postId)
+        getOne(postId)
             .then(result => {
                 changeValues(result);
             });

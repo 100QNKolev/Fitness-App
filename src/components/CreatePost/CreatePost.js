@@ -1,13 +1,16 @@
 import { useForm } from '../../hooks/useForm';
 import styles from './CreatePost.module.css';
+import { usePostContext } from '../../contexts/gameContext';
 
-export const CreatePost = ({ onSubmitHandler }) => {
+export const CreatePost = () => {
+
+    const {onCreateSubmit} = usePostContext();
 
     const { values, changeHandler, onSubmit } = useForm({
         title: '',
         thumbnailUrl: '',
         description: '',
-    }, onSubmitHandler );
+    }, onCreateSubmit );
 
     return (
         <div>

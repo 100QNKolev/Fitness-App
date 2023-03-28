@@ -1,42 +1,50 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useService } from "../../hooks/useService";
-import { postServiceFactory } from '../../services/postService';
 import styles from './Details.module.css';
-import { AuthContext } from "../../contexts/authContext";
-import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { useForm } from "../../hooks/useForm";
+import { AddComment } from "./AddComment/AddComment";
+import { commentServiceFactory } from "../../services/commentService";
+import { useAuthContext } from "../../contexts/authContext";
+import { usePostContext } from "../../contexts/gameContext";
 
-export const Details = ({onDeleteHandler}) => {
+export const Details = () => {
 
     const { postId } = useParams();
+    const {getOne} = usePostContext();
     const [post, setPost] = useState({});
+    const { } = useForm({
+        comment: '',
 
-    const { userId } = useContext(AuthContext);
-    //const [username, setUsername] = useState('');
-    //const [comment, setComment] = useState('');
+    });
 
-    const postService = useService(postServiceFactory);
+    const { userId, isAuthenticated, onDeleteHandler } = useAuthContext();
+    const commentService = useService(commentServiceFactory);
+
+    const isOwner = post._ownerId === userId;
 
     useEffect(() => {
-        postService.getOne(postId)
-            .then(result => {
-                setPost(result);
-            })
-    }, [postId, postService]);
+        Promise.all([
+            getOne(postId),
+            commentService.getAll(postId),
+        ])
+            .then(([postData, commentsData]) => {
+                setPost({
+                    ...postData,
+                    comments: commentsData
+                });
+            });
+    });
 
-    //const onCommentSubmit = async (e) => {
-    //    e.preventDefault();
-    //
-    //    const result = await postService.addComment(postId, {
-    //        username,
-    //        comment,
-    //    });
-    //
-    //    setPost(state => ({...state, comments: {...state.comments, [result._id]: result}}));
-    //    setUsername('');
-    //    setComment('');
-    //};
+    const onCommentSubmit = async (values) => {
+        const result = commentService.create(postId, values);
+
+        setPost(state => ({
+            ...state,
+            comments: [...state.comments, result],
+        }));
+    };
 
     return (
 
@@ -49,15 +57,31 @@ export const Details = ({onDeleteHandler}) => {
                 <div className={styles['description']}>
                     <p>{post.description}</p>
                 </div>
-                {post._ownerId === userId && (
+                {isOwner && (
                     <div className="ownerButtons">
                         <Link to={`/catalog/${post._id}/edit`} className="button" >Edit</Link>
                         <button onClick={() => onDeleteHandler(post._id)} className="button">Delete</button>
                     </div>
                 )}
+                {post.comments && (
+                    <div>
+                        <h2>Comments:</h2>
+                        <ul>
+                            {post.comments && Object.values(post.comments)
+                                .map(x => (<li key={x._id}>
+                                    <p>{x.username}: {x.comment}</p>
+                                </li>))}
+                        </ul>
+                    </div>
+                )}
+                {isAuthenticated &&
+                    <AddComment onCommentSubmit={onCommentSubmit} />
+                }
+                {!post.comments && (
+                    <h1>No coments</h1>
+                )}
             </div>
         </div>
 
     );
-
 };

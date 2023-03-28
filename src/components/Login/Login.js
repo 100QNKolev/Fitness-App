@@ -1,11 +1,10 @@
 import styles from './Login.module.css';
 import { useForm } from '../../hooks/useForm';
-import { useContext } from 'react';
-import { AuthContext } from '../../contexts/authContext';
+import { useAuthContext } from '../../contexts/authContext';
 
 export const Login = () => {
 
-    const { onLoginSubmit } = useContext(AuthContext);
+    const { onLoginSubmit } = useAuthContext();
 
     const { values, changeHandler, onSubmit } = useForm({
         email: "",
