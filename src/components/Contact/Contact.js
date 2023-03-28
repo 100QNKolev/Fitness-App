@@ -22,7 +22,7 @@ export const Contact = () => {
         <div className={styles['logo']}></div>
         <div className={styles['contact-block']}>
             <form onSubmit={onSubmit} method="POST" >
-                <h1>Contact Us</h1>
+                <h1>Contact us</h1>
                 <input type="text" placeholder="Username" value={values.username} onChange={changeHandler} name="username" id="username" />
                 <input type="text" placeholder="Email" value={values.email} onChange={changeHandler} name="email" id="email" />
                 <input type="text" placeholder="Question" value={values.question} onChange={changeHandler} name="question" id="question" />
