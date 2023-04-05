@@ -9,7 +9,7 @@ export const commentServiceFactory = (token) => {
     const getAll = async (postId) => {
         const query = encodeURIComponent(`postId="${postId}"`);
 
-        const result = await await requester.get(`${baseUrl}?where=${query}`);
+        const result = await requester.get(`${baseUrl}?where=${query}`);
         const comments = Object.values(result);
 
         return comments;

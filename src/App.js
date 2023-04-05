@@ -12,6 +12,7 @@ import { EditPost } from './components/Edit/Edit';
 import { PostProvider } from './contexts/postContext';
 import { About } from './components/About/About';
 import { Contact } from './components/Contact/Contact';
+import { MyAccount } from './components/MyAccount/MyAccount';
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
               <Route path='/create' element={<CreatePost />} />
               <Route path='/catalog/:postId' element={<Details />} />
               <Route path='/catalog/:postId/edit' element={<EditPost />} />
+              <Route path='/account/:accountId' element={<MyAccount />} />
             </Routes>
           </main>
 

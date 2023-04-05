@@ -17,9 +17,9 @@ export const Register = () => {
         email: "",
     }, onRegisterSubmit);
 
-    const validateData = (e) => {
+    const validateData = async (e) => {
         e.preventDefault();
-        const errors = Object.values(validateUser(values));
+        const errors = Object.values(await validateUser(values));
 
         if (errors.length === 0) {
             onSubmit(e);

@@ -31,7 +31,25 @@ export const postServiceFactory = (token) => {
     };
     
     const edit = (postId, data) => {
-        request.put(`${baseUrl}/${postId}`, data);
+        return request.put(`${baseUrl}/${postId}`, data);
+    };
+
+    const getByUser = async (userId) => {
+        const query = encodeURIComponent(`_ownerId="${userId}"`);
+
+        const result = await request.get(`${baseUrl}?where=${query}`);
+        const comments = Object.values(result);
+
+        return comments;
+    };
+
+    const getByName = async (name) => {
+        const query = encodeURIComponent(`title LIKE "${name}"`);
+
+        const result = await request.get(`${baseUrl}?where=${query}`);
+        const posts = Object.values(result);
+
+        return posts;
     };
 
     return {
@@ -40,6 +58,8 @@ export const postServiceFactory = (token) => {
         create,
         addComment,
         deletePost,
-        edit
+        edit,
+        getByUser,
+        getByName
     };
 }

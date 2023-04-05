@@ -6,7 +6,7 @@ import { AddComment } from "./AddComment/AddComment";
 import { commentServiceFactory } from "../../services/commentService";
 import { useAuthContext } from "../../contexts/authContext";
 import { usePostContext } from "../../contexts/postContext";
-import { Comment } from "./templates/Comment";
+import { Comment } from "./templates/Comment/Comment";
 import styles from './Details.module.css';
 
 export const Details = () => {
@@ -32,14 +32,15 @@ export const Details = () => {
                     ...postData,
                 });
             });
-    });
+    }, [postId]);
 
     const onCommentSubmit = async (values) => {
-        const result = commentService.create(postId, values);
+        const result = await commentService.create(postId, values);
 
-        setComments(state => ({
-            ...state.comments, result,
-        }));
+        setComments(state => (
+            state = [
+            ...state, result,
+            ]));
     };
 
     return (
@@ -70,7 +71,7 @@ export const Details = () => {
                         <ul>
                             {comments
                                 .map(x => (
-                                    <div style={{ marginTop: 5 }} >
+                                    <div key={x._id} style={{ marginTop: 5 }} >
                                         <Comment currentComment={x} />
                                     </div>
                                 ))}

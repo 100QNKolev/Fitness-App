@@ -1,17 +1,17 @@
 import { authServiceFactory } from "../services/authService";
+
 const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
 export const validateLogin = async (userData) => {
-    const {Login} = authServiceFactory();
+    const { Login } = authServiceFactory();
     const errors = {};
 
     const result = await Login(userData);
 
-    if(Object.entries(result).length > 0)
-    {
+    if (Object.entries(result).length > 0) {
         return errors;
     }
-    else{
+    else {
         errors['error'] = "Wrong email or password";
     }
 
@@ -19,8 +19,7 @@ export const validateLogin = async (userData) => {
 
 };
 
-export const validateUser = (values) => {
-
+export const validateUser = async (values) => {
     const { username, email, password, confirmPassword } = values;
     const errors = {};
 
@@ -44,7 +43,6 @@ export const validateUser = (values) => {
     catch (err) {
         errors.password = err.message;
     }
-
 
     return errors;
 };

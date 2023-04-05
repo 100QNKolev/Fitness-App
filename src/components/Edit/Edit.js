@@ -5,23 +5,23 @@ import { useParams } from 'react-router-dom';
 import { usePostContext } from '../../contexts/postContext';
 
 export const EditPost = () => {
-   
+
     const { postId } = useParams();
-    const {onEditSubmit, getOnePost} = usePostContext();
-    
+    const { onEditSubmit, getOnePost } = usePostContext();
+
     const { values, changeHandler, onSubmit, changeValues } = useForm({
         _id: '',
         title: '',
         thumbnailUrl: '',
         description: '',
     }, onEditSubmit);
- 
+
     useEffect(() => {
         getOnePost(postId)
             .then(result => {
                 changeValues(result);
             });
-            // eslint-disable-next-line
+        // eslint-disable-next-line
     }, [postId]);
 
     return (

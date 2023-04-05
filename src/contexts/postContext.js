@@ -11,14 +11,14 @@ export const PostProvider = ({ children }) => {
 
     const [posts, setPosts] = useState([]);
     const navigate = useNavigate();
-    const { getOne, getAll, create, edit, deletePost } = postServiceFactory(token);
+    const { getOne, getAll, create, edit, deletePost, getByUser, getByName } = postServiceFactory(token);
 
     useEffect(() => {
         getAll()
             .then(result => {
                 setPosts(result);
             })
-    });
+    }, []);
 
     const onCreateSubmit = async (data) => {
         const newPost = await create(data);
@@ -49,12 +49,22 @@ export const PostProvider = ({ children }) => {
         return await getOne(postId);
     };
 
+    const getUserPosts = async (userId) => {
+        return await getByUser(userId);
+    };
+
+    const getSearchedPosts = async (name) => {
+        setPosts(await getByName(name));
+    };
+
     const context = {
         onCreateSubmit,
         onEditSubmit,
         deletePostHandler,
         posts,
-        getOnePost
+        getOnePost,
+        getUserPosts,
+        getSearchedPosts
     };
 
     return (

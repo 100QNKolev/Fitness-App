@@ -1,4 +1,4 @@
-import { CatalogItem } from './CatalogItem/CatalogItem';
+import { CatalogItem } from './templates/CatalogItem/CatalogItem';
 import { usePostContext } from '../../contexts/postContext';
 import styles from './Catalog.module.css';
 

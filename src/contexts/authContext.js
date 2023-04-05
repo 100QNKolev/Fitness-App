@@ -34,10 +34,15 @@ export const AuthProvider = ({children}) => {
         navigate('/catalog');
     };
 
+    const getOneUser = async () => {
+        return await authService.getOne();
+    };
+
     const context = {
         onRegisterSubmit,
         onLoginSubmit,
         onLogoutHandler,
+        getOneUser,
         userId: user._id,
         username: user.username,
         email: user.email,
