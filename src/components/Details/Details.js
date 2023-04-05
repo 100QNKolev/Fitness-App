@@ -32,6 +32,7 @@ export const Details = () => {
                     ...postData,
                 });
             });
+            // eslint-disable-next-line
     }, [postId]);
 
     const onCommentSubmit = async (values) => {

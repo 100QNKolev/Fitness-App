@@ -18,6 +18,7 @@ export const PostProvider = ({ children }) => {
             .then(result => {
                 setPosts(result);
             })
+            // eslint-disable-next-line
     }, []);
 
     const onCreateSubmit = async (data) => {

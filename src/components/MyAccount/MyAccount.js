@@ -8,7 +8,7 @@ import { Post } from "../MyAccount/templates/Post/Post";
 export const MyAccount = () => {
 
     const { accountId } = useParams();
-    const { getOneUser, token } = useAuthContext();
+    const { getOneUser } = useAuthContext();
     const [user, setUser] = useState({});
     const [userPosts, setUserPosts] = useState([]);
     const { getUserPosts } = usePostContext();
