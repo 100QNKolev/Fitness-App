@@ -1,21 +1,23 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link,useParams } from "react-router-dom";
+
 import { useService } from "../../hooks/useService";
-import { Link } from "react-router-dom";
 import { AddComment } from "./AddComment/AddComment";
 import { commentServiceFactory } from "../../services/commentService";
 import { useAuthContext } from "../../contexts/authContext";
 import { usePostContext } from "../../contexts/postContext";
 import { Comment } from "./templates/Comment/Comment";
+
 import styles from './Details.module.css';
 
 export const Details = () => {
 
     const { postId } = useParams();
-
     const { userId, isAuthenticated } = useAuthContext();
     const { getOnePost, deletePostHandler } = usePostContext();
+
     const commentService = useService(commentServiceFactory);
+    
     const [post, setPost] = useState({});
     const [comments, setComments] = useState([]);
 

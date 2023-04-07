@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import styles from './Login.module.css';
+
 import { useForm } from '../../hooks/useForm';
 import { useAuthContext } from '../../contexts/authContext';
 import { validateLogin } from '../../validators/authValidator';
+
+import styles from './Login.module.css';
 
 export const Login = () => {
 

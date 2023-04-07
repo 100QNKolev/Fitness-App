@@ -16,7 +16,6 @@ export const useForm = (initialValues, onSubmitHandler) => {
     };
 
     const changeValues = (newValues) => {
-//TODO: Validate dali newValues sa s sushtite propartita kato initialValues
 
         setValues(newValues);
     };

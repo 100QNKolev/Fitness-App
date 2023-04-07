@@ -1,5 +1,6 @@
 import { CatalogItem } from './templates/CatalogItem/CatalogItem';
 import { usePostContext } from '../../contexts/postContext';
+
 import styles from './Catalog.module.css';
 
 export const Catalog = () => {
@@ -14,7 +15,7 @@ export const Catalog = () => {
 
             {posts.length === 0 && (
                 <div className={styles['heading']}>
-                    <h1>No posts yet!</h1>
+                    <h1>No posts available</h1>
                 </div>
             )}
         </div>

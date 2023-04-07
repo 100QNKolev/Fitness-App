@@ -1,9 +1,12 @@
-import styles from './Contact.module.css';
-import { useAuthContext } from '../../contexts/authContext';
 import { useNavigate } from 'react-router-dom';
+
+import { useAuthContext } from '../../contexts/authContext';
 import { useForm } from '../../hooks/useForm';
 
+import styles from './Contact.module.css';
+
 export const Contact = () => {
+
     const { email, username } = useAuthContext();
     const navigate = useNavigate();
 

@@ -1,8 +1,10 @@
 import { useEffect } from 'react';
-import { useForm } from '../../hooks/useForm';
-import styles from './Edit.module.css';
 import { useParams } from 'react-router-dom';
+
+import { useForm } from '../../hooks/useForm';
 import { usePostContext } from '../../contexts/postContext';
+
+import styles from './Edit.module.css';
 
 export const EditPost = () => {
 

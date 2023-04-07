@@ -1,8 +1,10 @@
-import styles from './Register.module.css';
+import { useState } from 'react';
+
 import { useForm } from '../../hooks/useForm';
 import { useAuthContext } from '../../contexts/authContext';
 import { validateUser } from '../../validators/authValidator';
-import { useState } from 'react';
+
+import styles from './Register.module.css';
 
 export const Register = () => {
 

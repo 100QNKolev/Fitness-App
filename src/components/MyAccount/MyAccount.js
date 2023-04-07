@@ -1,9 +1,11 @@
-import { useParams } from "react-router-dom";
-import { useAuthContext } from "../../contexts/authContext";
 import { useEffect, useState } from 'react';
-import styles from './MyAccount.module.css';
+import { useParams } from "react-router-dom";
+
+import { useAuthContext } from "../../contexts/authContext";
 import { usePostContext } from "../../contexts/postContext";
 import { Post } from "../MyAccount/templates/Post/Post";
+
+import styles from './MyAccount.module.css';
 
 export const MyAccount = () => {
 

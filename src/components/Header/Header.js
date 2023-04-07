@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom';
-import styles from './Header.module.css';
+
 import { useForm } from '../../hooks/useForm';
 import { useAuthContext } from '../../contexts/authContext';
 import { usePostContext } from '../../contexts/postContext';
 
+import styles from './Header.module.css';
+
 export const Header = () => {
+    
     const { isAuthenticated, userId } = useAuthContext();
     const { getSearchedPosts } = usePostContext();
 
