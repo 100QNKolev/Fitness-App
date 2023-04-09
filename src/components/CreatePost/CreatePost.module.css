@@ -76,3 +76,15 @@ textarea {
 .createPost-block textarea:active, .createPost-block textarea:focus {
     border: 1px solid #ff656c;
 }
+
+.error h2 {
+    color: red;
+    font-size: 15px;
+    width: 400px;
+    height: auto;
+    padding: 20px;
+    background: #0000005e;
+    border-radius: 5px;
+    border-top: 5px solid #831717cb;
+    margin: 10px auto;
+};
