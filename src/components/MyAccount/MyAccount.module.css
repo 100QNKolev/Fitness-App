@@ -1,5 +1,5 @@
 body {
-    background: url('https://www.amd.com/content/dam/amd/en/images/backgrounds/colors/2667050-purple-black-center-blur-bg.jpg') no-repeat fixed center center;
+    background: url('../../../public/background.jpg') no-repeat fixed center center;
     background-size: cover;
     font-family: Montserrat;
 }

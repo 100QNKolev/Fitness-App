@@ -1,50 +1,93 @@
-# fitness-app
- 
-Fitness Forum Architecture Documentation
+# Fitness App
 
-This documentation provides an overview of the Fitness Forum architecture, including its components, interactions, and functionality.
+## Table of Contents
 
-# Introduction
+1. [Overview](#overview)
+2. [Features](#features)
+3. [Screenshots](#screenshots)
+4. [Setup Instructions](#setup-instructions)
+5. [Usage](#usage)
 
-The Fitness Forum is a web-based application that enables users to discuss and share information about fitness-related topics. The application is designed to provide a platform for fitness enthusiasts to connect, learn, and motivate each other to achieve their fitness goals.
-Components
+---
 
-The Fitness Forum consists of the following components:
+## Overview
 
-    Frontend
-    Backend
-    Database
+The Fitness App is a modern web application designed to help users manage their fitness journey effectively. It allows users to browse posts, view their profile, and interact with content via a dynamic and responsive interface.
 
-# Frontend
+---
 
-The frontend of the Fitness Forum is responsible for rendering the user interface and handling user interactions. It is built using a combination of HTML, CSS, and JavaScript frameworks such as React.
+## Features
 
-# Backend
+- **Home Page**: A landing page displaying key information and navigation.
+- **Catalog**: Browse available fitness posts or plans.
+- **My Profile**: Personalized dashboard to manage fitness data.
+- **Post**: View detailed information about individual posts.
 
-The backend of the Fitness Forum is responsible for handling user requests and processing data. 
+---
 
-# Database
+## Screenshots
 
-The database of the Fitness Forum is responsible for storing user data, forum posts, comments, and other application-related data.
+1. **Home Page**
 
-# Interaction
+![Home Page](screenshots/HomePage.png)
 
-The interaction between the components of the Fitness Forum is as follows:
+2. **Catalog**
 
-    The user interacts with the frontend of the application by submitting requests and interacting with the user interface.
-    The frontend sends the request to the backend through a RESTful API.
-    The backend processes the request and sends a response back to the frontend.
-    If necessary, the frontend updates the user interface to reflect the response.
-    The backend stores or retrieves data from the database as necessary to process the request.
+![Catalog](screenshots/Catalog.png)
 
-# Functionality
+3. **My Profile**
 
-The Fitness Forum provides the following functionality to its users:
+![My Profile](screenshots/MyProfile.png)
 
-    User registration and authentication
-    Forum post creation and editing
-    Forum post commenting
+4. **Post**
 
-# Conclusion
+![Post](screenshots/Post.png)
 
-The Fitness Forum is a web-based application that provides a platform for fitness enthusiasts to connect, learn, and motivate each other to achieve their fitness goals. Its components include a frontend, backend, and database, which interact with each other to provide users with the necessary functionality.
+---
+
+## Setup Instructions
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v14 or later recommended)
+
+### Steps
+
+- Clone the repository:
+
+```bash
+git clone https://github.com/100QNKolev/fitness-app.git
+```
+- Start the server:
+
+```bash
+cd fitness-app/server
+node server.js
+```
+
+- Open a new terminal, navigate to the src directory, and install dependencies:
+
+```bash
+cd fitness-app/src
+npm install
+```
+
+- Start the frontend:
+
+```bash
+npm start
+```
+
+**Open your browser and navigate to http://localhost:3000 to use the app.**
+
+## Usage
+
+Once the app is running:
+
+Access the Home Page to explore the application.
+
+Browse available fitness posts via the Catalog.
+
+Manage personal information and posts in My Profile.
+
+View detailed content in the Post section.
